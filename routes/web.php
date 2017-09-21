@@ -1,4 +1,5 @@
 <?php
+use App\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,13 @@ Route::get('/about', function() {
 Route::get('/contact', function() {
     return view ('page/contact');
 });
+
+// ELOQUENT
+
+
+Route::get('/findwhere', function() {
+    //
+	$post =  Post::findOrFail(2);
+    return $post;
+});
+Route::resource('/posts', 'PostController');
