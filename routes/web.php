@@ -25,9 +25,46 @@ Route::get('/contact', function() {
 // ELOQUENT
 
 
-Route::get('/findwhere', function() {
+Route::get('/findall', function() {
     //
-	$post =  Post::findOrFail(2);
+	$post =  Post::all();
     return $post;
+});
+Route::get('/create', function() {
+    //
+    Post::create(['title'=>'Data with ID 5', 'content' => 'Lorem ipsum dolor sit amet,t dolore magna aliqua. Ut enim ad minim veniam,qlamco laboris nisi ut aliquip ex ea commodo']);
+});
+
+Route::get('/update', function() {
+
+   $new_data = Post::where('id',6)->where('is_admin', 0)->update(['title' => 'Data is being updated', 'content' => 'New Data being tested']);
+   
+});
+
+Route::get('/delete', function() {
+    //
+    Post::where('id',6)->delete(6);
+});
+
+Route::get('/softdelete', function() {
+    Post::find(4)->delete();
+
+});
+
+Route::get('/restoredeleted', function() {
+    //
+    $post = Post::onlyTrashed()->get();
+
+    return $post;
+});
+Route::get('/restore', function() {
+    //
+    $post = Post::withTrashed()->where('id',5)->restore();
+    return $post;
+});
+
+Route::get('/forcedelete', function() {
+    //
+    $post =Post::withTrashed()->where('id', 4)->forcedelete();
 });
 Route::resource('/posts', 'PostController');

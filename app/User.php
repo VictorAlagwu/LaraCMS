@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+//ORM means Object Relational Mapper
 class User extends Authenticatable
 {
     use Notifiable;
