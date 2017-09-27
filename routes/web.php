@@ -1,5 +1,7 @@
 <?php
 use App\Post;
+use App\User;
+use App\Country;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +34,7 @@ Route::get('/findall', function() {
 });
 Route::get('/create', function() {
     //
-    Post::create(['title'=>'Data with ID 5', 'content' => 'Lorem ipsum dolor sit amet,t dolore magna aliqua. Ut enim ad minim veniam,qlamco laboris nisi ut aliquip ex ea commodo']);
+    Post::create(['title'=>'New Content for Post', 'content' => 'Lorem ipsum dolor sit amet,t dolore magna aliqua. Ut enim ad minim veniam,qlamco laboris nisi ut aliquip ex ea commodo','user_id'=>'1']);
 });
 
 Route::get('/update', function() {
@@ -66,5 +68,55 @@ Route::get('/restore', function() {
 Route::get('/forcedelete', function() {
     //
     $post =Post::withTrashed()->where('id', 4)->forcedelete();
+
 });
 Route::resource('/posts', 'PostController');
+
+// One to One relationship
+Route::get('user/{id}/post', function($id) {
+
+   return User::find($id)->post;
+});
+
+Route::get('post/{id}/user', function($id) {
+    //
+    return Post::find($id)->user->name;
+});
+
+//One to Many Relationship
+
+Route::get('user/{id}', function($id) {
+    //
+    $posts = User::find($id);
+
+    foreach ($posts->posts as $post) {
+        echo $post ."</br>";
+    }
+});
+
+Route::get('user/{id}/role', function($id) {
+    //
+    $users = User::find($id)->roles;
+    foreach($users as $role){
+        return $role;
+    }
+    
+});
+
+Route::get('user/pivot/{id}', function($id) {
+    //
+    $user = User::find($id);
+
+    foreach ($user ->roles as $role) {
+        echo  $role->pivot;
+    }
+});
+
+Route::get('user/country/{id}', function($id) {
+    //
+    $country =Country::find($id);
+    foreach ($country->posts as $post) {
+        echo $post.'</br>';
+
+    }
+});
