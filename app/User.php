@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-//ORM means Object Relational Mapper
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -26,22 +26,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function post(){
-        return $this->hasOne('App\Post');   
-    }
-
-    public function posts(){
-        return $this->hasMany('App\Post');
-    }
-    public function roles(){
-    	return $this->belongsToMany('App\Role')->withPivot('created_at');
-      
-        /* To Use Customise Tables */
-       // return $this->belongsToMany('App\Role', 'role_user','user_id','role_id');
-    }
-
-    public function photos(){
-        return $this->morphMany('App\Photo','imageable');
-    }
 }

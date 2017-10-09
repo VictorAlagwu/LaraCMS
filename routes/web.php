@@ -1,8 +1,4 @@
 <?php
-use App\Post;
-use App\User;
-use App\Country;
-use App\Photo;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +14,7 @@ use App\Photo;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/about', function() {
-    return view ('page/about');
-});
-Route::get('/contact', function() {
-    return view ('page/contact');
-});
 
+Auth::routes();
 
-Route::group(['middleware' => 'web'], function() {
-    //
-	Route::resource('/posts','PostController');
-	
-});
+Route::get('/home', 'HomeController@index')->name('home');
