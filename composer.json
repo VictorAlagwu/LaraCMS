@@ -8,7 +8,10 @@
         "php": "*",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html":"^5.2"
+        "laravelcollective/html":"^5.2",
+        "cviebrock/eloquent-sluggable": "^4.0",
+        "unisharp/laravel-filemanager": "^1.6",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

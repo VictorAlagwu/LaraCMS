@@ -18,8 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+// Route::group(['prefix' => 'admin'], function() {
+//     Route::resource('admin/users','AdminUsersController' );
+// });
 
-Route::resource('/admin/users','AdminUsersController' );
+Route::prefix('admin')->group(function () {
+    Route::resource('users','AdminUsersController' );
+});
+
 
 Route::get('/admin', function() {
     return view('admin.index');
