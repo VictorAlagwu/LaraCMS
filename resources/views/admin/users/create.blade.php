@@ -22,8 +22,8 @@
 
  <br>
  <div class="form-inline text-center">
-   {!! Form::label('file', 'Upload Files') !!}
-   {!! Form::file('file',null,['class'=>'form-control']) !!}
+   {!! Form::label('photo_id', 'Upload Files') !!}
+   {!! Form::file('photo_id',null,['class'=>'form-control']) !!}
  </div>
  <br>
  <div class="form-inline text-center">
@@ -39,5 +39,5 @@
  <div class="form-inline text-center">
    {!! Form::submit('Create User', ['class'=>'btn btn-default']) !!}
  </div>
- 	
+ {!! Form::close() !!}
 @stop
