@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+@if(Session::has('deleted'))
+<p class="bg-danger">{{Session('deleted')}}</p>
+@endif
 <h4>Users</h4>
  	 <table class="table table-condensed">
     <thead>
