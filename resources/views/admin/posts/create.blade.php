@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<h2>Create Post</h2>
-
+<h2>Create New Post</h2>
 <br>
 {!! Form::open(['method'=>'POST','action'=>['PostController@store', 'files'=>true]]) !!}
 <div class="form-group">
