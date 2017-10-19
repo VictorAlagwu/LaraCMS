@@ -18,11 +18,11 @@
     	@foreach ($posts as $post)
    			<tr>
    				<td>{{ $post->id }}</td>
-   				<td> {{ $post->title }}</td>
+   				<td><a href="{{ route('post.edit',$post->id)}}"> {{ $post->title }}</a></td>
    				<td> {{ $post->body }}</td>
-   				<td> {{ $post->category_id}}</td>
-   				<td> {{ $post->user_id }}</td></td>
-                <td></td>
+   				<td> {{ $post->category != null ? $post->category->name : "No Category"}}</td>
+   				<td> {{ $post->user != null ? $post->user->name : "No User" }}</td>
+          <td><img  height="50" src="/images/{{ $post->photo != null ? $post->photo->file_path : "455x449.png"}}" alt="Images"></td>
    				<td>{{ $post->created_at->diffForHumans() }}</td>
    				<td>{{ $post->updated_at->diffForHumans() }}</td>
    			</tr>

@@ -16,14 +16,30 @@
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
 
-
+    <script src="{{url('tinymce/jquery.tinymce.min.js')}}"></script>
+    <script src="{{url('tinymce/tinymce.min.js')}}"></script>
+    <script>
+         tinymce.init({     selector: "textarea",theme: "modern",width: 680,height: 300,
+            plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+            ],
+            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+            toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+            image_advtab: true ,
+            
+            external_filemanager_path:"{{url('tinymce/filemanager')}}/",
+            filemanager_title:"Responsive Filemanager" ,
+            external_plugins: { "filemanager" : "{{url('tinymce')}}/filemanager/plugin.min.js"}
+        });
+    </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 
 
 
@@ -156,7 +172,7 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/categories">All Categories</a>
+                                <a href="{{route('category.index')}}">All Categories</a>
                             </li>
 
                             <li>
