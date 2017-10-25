@@ -24,6 +24,12 @@ class PostController extends Controller
         return view('admin.posts.index',compact('posts'));
     }
 
+    public function post($id){
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+        return view('post', compact('post','categories'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

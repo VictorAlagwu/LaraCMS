@@ -36,10 +36,10 @@ class User extends Authenticatable
 
     public function isAdmin(){
 
-        if ($this->role->name == "administrator" && $this->status == 1) {
+        if ($this->role->name == "administrator" && $this->status == 1 ) {
             return true;
         }
-        return 'not True';
+        return false;
     }
 
     public function posts(){

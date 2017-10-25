@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-class CategoryController extends Controller
+
+class CommentRepliesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,6 @@ class CategoryController extends Controller
     public function index()
     {
         //
-           $categories = Category::all();
-            return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -28,7 +24,6 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        // return view('admin.categories.index');
     }
 
     /**
@@ -40,9 +35,6 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        $input = $request->all();
-        Category::create($input);
-        return redirect ('admin/category');
     }
 
     /**
@@ -65,9 +57,6 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
-         $category = Category::findOrFail($id);
-         $user = Auth::user();
-         return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -80,11 +69,6 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $input =  $request->all();
-        $user = Auth::user();
-        Category::findOrFail($id)->update($input);
-        return redirect ('admin/category');
-
     }
 
     /**
@@ -96,8 +80,5 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-        $user = Auth::user();
-        Category::findOrFail($id)->destroy($id);
-        return redirect ('admin/category');
     }
 }

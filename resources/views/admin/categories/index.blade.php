@@ -27,7 +27,7 @@
 		  	@foreach($categories as $category)
 		    <tr>
 		      <th scope="row">{{ $category->id }}</th>
-		      <td>{{ $category->name }}</td>
+		      <td><a href="{{ route('category.edit',$category->id) }}">{{ $category->name }}</a></td>
 		    </tr>
 		    @endforeach
 		  </tbody>
